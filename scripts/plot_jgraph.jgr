@@ -1,0 +1,19 @@
+newgraph
+xaxis min 1 max 2048 size 7 log log_base 2 label fontsize 20 : Number of Patterns 
+yaxis size 2 label fontsize 20 : Time(seconds) 
+
+newcurve marktype circle linetype solid color 1 0 0 label : Aho-Corasick
+   pts
+   shell : cat aho_time.txt | awk '{print 2**(NR-1) " " $NF}'
+
+
+newcurve marktype circle linetype solid color 0 0 0 label : Trie only
+   pts
+   shell : cat trie_time.txt | awk '{print 2**(NR-1) " " $NF}'
+
+newcurve marktype circle linetype solid color 0 0 1 label : Naive approach
+   pts
+   shell : cat find_time.txt | awk '{print 2**(NR-1) " " $NF}'
+
+
+legend defaults hjl vjt x 1.5 y 200 fontsize 18
